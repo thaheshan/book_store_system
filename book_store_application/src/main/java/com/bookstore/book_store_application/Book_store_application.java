@@ -1,16 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
+// File: src/main/java/com/bookstore/book_store_application/BookstoreApplication.java
 package com.bookstore.book_store_application;
 
-/**
- *
- * @author Thahe
- */
-public class Book_store_application {
+import org.glassfish.jersey.server.ResourceConfig;
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+/**
+ * BookstoreApplication configures the Jersey resource scanning.
+ */
+public class book_store_application extends ResourceConfig {
+
+    public book_store_application() {
+        // This method is inherited from ResourceConfig
+        packages("com.bookstore.book_store_application.Resources",
+                 "com.bookstore.book_store_application.Exceptions");
     }
 }

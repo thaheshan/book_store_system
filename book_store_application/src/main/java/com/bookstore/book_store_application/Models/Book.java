@@ -84,9 +84,7 @@ public class Book {
     }
 
 
-    public static String getAuthor_ID() {
-        return Author_ID;
-    }
+ 
     public void SetAuthor_ID(String Author_ID) {
         this.Author_ID = Author_ID;
     }

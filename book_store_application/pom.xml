@@ -2,58 +2,103 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              https://maven.apache.org/xsd/maven-4.0.0.xsd">
-
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>com.example</groupId>
   <artifactId>bookstore-api</artifactId>
   <version>1.0-SNAPSHOT</version>
+
   <properties>
-      <maven.compiler.source>21</maven.compiler.source>
-      <maven.compiler.target>21</maven.compiler.target>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>21</maven.compiler.release>
+    <jersey.version>3.0.2</jersey.version>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+  </repositories>
+
   <dependencies>
-      <!-- Jersey JAX‑RS implementation -->
-      <dependency>
-          <groupId>org.glassfish.jersey.containers</groupId>
-          <artifactId>jersey-container-grizzly2-http</artifactId>
-          <version>3.1.5</version>
-      </dependency>
-      <dependency>
-          <groupId>org.glassfish.jersey.inject</groupId>
-          <artifactId>jersey-hk2</artifactId>
-          <version>3.1.5</version>
-      </dependency>
-      <!-- JSON‑B provider -->
-      <dependency>
-          <groupId>org.eclipse.parsson</groupId>
-          <artifactId>parsson</artifactId>
-          <version>1.1.4</version>
-      </dependency>
+    <!-- Jersey (JAX-RS) Grizzly integration -->
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet</artifactId>
+      <version>3.1.2</version>
+    </dependency>
+
+    <!-- Jersey JSON -->
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-binding</artifactId>
+      <version>3.1.2</version>
+    </dependency>
+
+    <!-- HK2 injection for resource classes -->
+    <dependency>
+      <groupId>org.glassfish.jersey.inject</groupId>
+      <artifactId>jersey-hk2</artifactId>
+      <version>${jersey.version}</version>
+    </dependency>
+
+    <!-- JSON‑B parser -->
+    <dependency>
+      <groupId>org.eclipse.parsson</groupId>
+      <artifactId>parsson</artifactId>
+      <version>1.1.4</version>
+    </dependency>
+
+    <!-- Grizzly core (for embedded server support) -->
+    <dependency>
+      <groupId>org.glassfish.grizzly</groupId>
+      <artifactId>grizzly-http-server</artifactId>
+      <version>2.3.33</version> <!-- Updated version to a stable release -->
+    </dependency>
+
+    <!-- Jersey container Grizzly2 integration -->
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-grizzly2-http</artifactId>
+      <version>3.1.2</version>
+      <type>jar</type>
+    </dependency>
   </dependencies>
 
   <build>
-      <plugins>
-          <!-- package into a fat‑jar for easy run -->
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-shade-plugin</artifactId>
-              <version>3.5.0</version>
-              <executions>
-                  <execution>
-                      <phase>package</phase>
-                      <goals><goal>shade</goal></goals>
-                      <configuration>
-                          <transformers>
-                              <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                  <mainClass>com.example.bookstore.Main</mainClass>
-                              </transformer>
-                          </transformers>
-                      </configuration>
-                  </execution>
-              </executions>
-          </plugin>
-      </plugins>
+    <plugins>
+      <!-- Java 21 compiler config -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <release>21</release>
+        </configuration>
+      </plugin>
+
+      <!-- Create an executable fat JAR -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>com.example.bookstore.Main</mainClass> <!-- Update this to your actual main class -->
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 </project>
