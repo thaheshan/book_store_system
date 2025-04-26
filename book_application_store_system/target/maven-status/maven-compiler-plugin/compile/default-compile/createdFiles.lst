@@ -1,3 +1,4 @@
+AppConfig.class
 com\bookstore\book_application_store_system\Models\Author.class
 com\bookstore\book_application_store_system\Models\Order.class
 com\bookstore\book_application_store_system\Main.class
@@ -7,7 +8,6 @@ com\bookstore\book_application_store_system\Exceptions\OutOfStockException.class
 com\bookstore\book_application_store_system\Exceptions\InvalidInputException.class
 com\bookstore\book_application_store_system\resources\OrderResource.class
 com\bookstore\book_application_store_system\resources\AuthorResource.class
-com\bookstore\book_application_store_system\BookStoreApplication.class
 com\bookstore\book_application_store_system\Exceptions\AuthorNotFoundException.class
 com\bookstore\book_application_store_system\resources\CustomerResource.class
 com\bookstore\book_application_store_system\Exceptions\OrderNotFoundException.class
