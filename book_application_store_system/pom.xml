@@ -1,0 +1,128 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.bookstore</groupId>
+    <artifactId>book_application_store_system</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>book_application_store_system-1.0-SNAPSHOT</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jakartaee>10.0.0</jakartaee>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- Tomcat Embed Dependency for running on Tomcat in embedded mode (optional if using a real Tomcat server) -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>10.1.10</version> <!-- Updated version -->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-el</artifactId>
+            <version>10.1.10</version> <!-- Updated version -->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-websocket</artifactId>
+            <version>10.1.10</version> <!-- Updated version -->
+        </dependency>
+
+        <!-- Jersey Dependencies for RESTful Web Services -->
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>3.1.0</version> <!-- Updated version -->
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+            <version>3.1.0</version> <!-- Updated version -->
+        </dependency>
+
+        <!-- Jakarta Servlet API -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version> <!-- Latest version -->
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Jakarta EE API Dependency -->
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>${jakartaee}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Additional Dependencies -->
+        <dependency>
+            <groupId>com.brightsparklabs</groupId>
+            <artifactId>datastore</artifactId>
+            <version>0.1.0-1</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.liferay.commerce</groupId>
+            <artifactId>com.liferay.headless.commerce.delivery.cart.api</artifactId>
+            <version>15.1.2</version>
+            <type>jar</type>
+        </dependency>
+
+        <!-- Jackson for JSON Processing -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.14.2</version> <!-- Updated version -->
+        </dependency>
+        <dependency>
+            <groupId>biz.aQute</groupId>
+            <artifactId>biz.aQute.osgi.logger.tracker.util</artifactId>
+            <version>1.10.0</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Maven WAR Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <!-- Add context path if needed for your WAR deployment -->
+                    <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+                </configuration>
+            </plugin>
+
+            <!-- Maven Tomcat Plugin for Deployment -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>tomcat9-maven-plugin</artifactId> <!-- Updated to Tomcat 9 plugin -->
+                <version>2.3</version> <!-- Latest stable version -->
+                <configuration>
+                    <url>http://localhost:8080/manager/text</url>
+                    <server>tomcat-server</server>
+                    <path>/bookstore</path>
+                </configuration>
+            </plugin>
+
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
