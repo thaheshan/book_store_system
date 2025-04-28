@@ -1,0 +1,97 @@
+{
+  "user": {
+    "name": "Thahe"
+  },
+  "collection": {
+    "info": {
+      "name": "Bookstore API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Books",
+        "item": [
+          {
+            "name": "Get All Books",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/books",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["api", "books"]
+              }
+            }
+          },
+          {
+            "name": "Add New Book",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"title\": \"Sample Book\",\n  \"authorId\": 1,\n  \"price\": 19.99,\n  \"stock\": 100\n}"
+              },
+              "url": {
+                "raw": "http://localhost:8080/api/books",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["api", "books"]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Authors",
+        "item": [
+          {
+            "name": "Get All Authors",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/authors",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["api", "authors"]
+              }
+            }
+          },
+          {
+            "name": "Add New Author",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"John Doe\",\n  \"bio\": \"An accomplished author.\"\n}"
+              },
+              "url": {
+                "raw": "http://localhost:8080/api/authors",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["api", "authors"]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
